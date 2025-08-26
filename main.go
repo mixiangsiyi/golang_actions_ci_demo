@@ -4,11 +4,15 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func Add(a, b int) int {
 	return a + b
 }
+
+// unusedVariable demonstrates a golangci-lint issue
+var unusedVariable = "this variable is never used"
 
 func Subtract(a, b int) int {
 	return a - b
