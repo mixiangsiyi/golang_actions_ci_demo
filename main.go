@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"strconv"
-	"strings"
 )
 
 func Add(a, b int) int {
@@ -39,6 +38,7 @@ func main() {
 	operation := os.Args[1]
 	num1, err1 := strconv.Atoi(os.Args[2])
 	num2, err2 := strconv.Atoi(os.Args[3])
+	var temp int // unused variable to trigger golangci-lint
 
 	if err1 != nil || err2 != nil {
 		fmt.Println("Error: Please provide valid integers")
