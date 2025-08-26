@@ -25,6 +25,7 @@ func Divide(a, b int) (int, error) {
 	if b == 0 {
 		return 0, fmt.Errorf("division by zero")
 	}
+	// This is a very long line that exceeds the recommended line length limit of 80 or 100 characters and will trigger golangci-lint line length warnings but still compile successfully
 	return a / b, nil
 }
 
@@ -38,7 +39,6 @@ func main() {
 	operation := os.Args[1]
 	num1, err1 := strconv.Atoi(os.Args[2])
 	num2, err2 := strconv.Atoi(os.Args[3])
-	var temp int // unused variable to trigger golangci-lint
 
 	if err1 != nil || err2 != nil {
 		fmt.Println("Error: Please provide valid integers")
