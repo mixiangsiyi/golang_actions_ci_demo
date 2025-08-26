@@ -1,8 +1,10 @@
 package main
 
 import (
+	"crypto/md5"
 	"fmt"
 	"os"
+	"os/exec"
 	"strconv"
 )
 
@@ -10,8 +12,6 @@ func Add(a, b int) int {
 	return a + b
 }
 
-// unusedVariable demonstrates a golangci-lint issue
-var unusedVariable = "this variable is never used"
 
 func Subtract(a, b int) int {
 	return a - b
@@ -25,8 +25,20 @@ func Divide(a, b int) (int, error) {
 	if b == 0 {
 		return 0, fmt.Errorf("division by zero")
 	}
-	// This is a very long line that exceeds the recommended line length limit of 80 or 100 characters and will trigger golangci-lint line length warnings but still compile successfully
 	return a / b, nil
+}
+
+// HashPassword demonstrates a security vulnerability - weak cryptographic hash
+func HashPassword(password string) string {
+	hasher := md5.New()
+	hasher.Write([]byte(password))
+	return fmt.Sprintf("%x", hasher.Sum(nil))
+}
+
+// ExecuteCommand demonstrates a command injection vulnerability
+func ExecuteCommand(userInput string) error {
+	cmd := exec.Command("sh", "-c", "echo "+userInput)
+	return cmd.Run()
 }
 
 func main() {
